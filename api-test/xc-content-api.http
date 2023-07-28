@@ -5,6 +5,16 @@ Content-Type: application/json
 {
   "auditStatus": "202004",
   "courseName": "java",
+
+
+
+
+
+
+
+
+
+
   "publishStatus": "string"
 }
 
