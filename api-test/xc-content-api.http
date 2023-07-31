@@ -5,17 +5,9 @@ Content-Type: application/json
 {
   "auditStatus": "202004",
   "courseName": "java",
-
-
-
-
-
-
-
-
-
-
   "publishStatus": "string"
 }
+### 查询课程分类
+GET {{content_host}}/content/course-category/tree-nodes
 
 <> 2023-07-27T160528.200.json

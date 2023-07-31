@@ -11,5 +11,4 @@ import com.xuecheng.content.model.po.CourseBase;
  * @author itcast
  */
 public interface CourseBaseMapper extends BaseMapper<CourseBase> {
-
 }

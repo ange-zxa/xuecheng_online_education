@@ -1,6 +1,7 @@
 package com.xuecheng.content.model.dto;
 
 import com.xuecheng.content.model.po.CourseCategory;
+import lombok.Data;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * \* Description: 课程分类dto目模板
  * \
  */
+@Data
 public class CourseCategoryTreeDto extends CourseCategory {
-    List<CourseCategoryTreeDto> ChildrenNodeTree;
-
+    List<CourseCategoryTreeDto> ChildrenTreeNodes;
 }
