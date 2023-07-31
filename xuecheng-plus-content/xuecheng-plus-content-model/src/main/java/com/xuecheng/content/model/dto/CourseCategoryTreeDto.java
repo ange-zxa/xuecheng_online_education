@@ -14,6 +14,7 @@ import java.util.List;
  * \
  */
 @Data
+
 public class CourseCategoryTreeDto extends CourseCategory {
     List<CourseCategoryTreeDto> ChildrenTreeNodes;
 }
