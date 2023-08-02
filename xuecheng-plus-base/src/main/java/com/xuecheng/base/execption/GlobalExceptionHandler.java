@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * \* User: 祝先澳
  * \* Date: 2023/8/2
  * \* Time: 9:40
- * \* Description:
+ * \* Description:全局处理器
  * \
  */
 @Slf4j

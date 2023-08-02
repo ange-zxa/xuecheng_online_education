@@ -2,7 +2,6 @@ package com.xuecheng.content.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.xuecheng.base.execption.XueChengPlusException;
 import com.xuecheng.base.model.PageParams;
 import com.xuecheng.base.model.PageResult;
 import com.xuecheng.content.mapper.CourseBaseMapper;
@@ -69,33 +68,33 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
     @Transactional
     public CourseBaseInfoDto createCourseBase(Long companyId, AddCourseDto dto) {
         //校验数据
-        if (StringUtils.isBlank(dto.getName())) {
-            XueChengPlusException.cast("课程名称为空");
-            XueChengPlusException.cast("课程名称为空");
-        }
-        if (StringUtils.isBlank(dto.getMt())) {
-            XueChengPlusException.cast("课程分类为空");
-        }
-
-        if (StringUtils.isBlank(dto.getSt())) {
-            throw new RuntimeException("课程分类为空");
-        }
-
-        if (StringUtils.isBlank(dto.getGrade())) {
-            throw new RuntimeException("课程等级为空");
-        }
-
-        if (StringUtils.isBlank(dto.getTeachmode())) {
-            throw new RuntimeException("教育模式为空");
-        }
-
-        if (StringUtils.isBlank(dto.getUsers())) {
-            throw new RuntimeException("适应人群为空");
-        }
-
-        if (StringUtils.isBlank(dto.getCharge())) {
-            throw new RuntimeException("收费规则为空");
-        }
+//        if (StringUtils.isBlank(dto.getName())) {
+//            XueChengPlusException.cast("课程名称为空");
+//            XueChengPlusException.cast("课程名称为空");
+//        }
+//        if (StringUtils.isBlank(dto.getMt())) {
+//            XueChengPlusException.cast("课程分类为空");
+//        }
+//
+//        if (StringUtils.isBlank(dto.getSt())) {
+//            throw new RuntimeException("课程分类为空");
+//        }
+//
+//        if (StringUtils.isBlank(dto.getGrade())) {
+//            throw new RuntimeException("课程等级为空");
+//        }
+//
+//        if (StringUtils.isBlank(dto.getTeachmode())) {
+//            throw new RuntimeException("教育模式为空");
+//        }
+//
+//        if (StringUtils.isBlank(dto.getUsers())) {
+//            throw new RuntimeException("适应人群为空");
+//        }
+//
+//        if (StringUtils.isBlank(dto.getCharge())) {
+//            throw new RuntimeException("收费规则为空");
+//        }用jSR在controller层校验
         //向课程基本信息表插入信息course_base
         CourseBase courseBase = new CourseBase();
 //        用bean工具类进行复制，只要属性名称一样就可以拷贝，就算前的是空，后面也会被置为空

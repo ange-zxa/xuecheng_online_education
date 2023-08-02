@@ -7,7 +7,7 @@ import java.io.Serializable;
  * \* User: 祝先澳
  * \* Date: 2023/8/2
  * \* Time: 9:31
- * \* Description:
+ * \* Description:自定义异常
  * \
  */
 public class RestErrorResponse implements Serializable {

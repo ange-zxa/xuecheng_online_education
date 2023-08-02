@@ -5,7 +5,7 @@ package com.xuecheng.base.execption;
  * \* User: 祝先澳
  * \* Date: 2023/8/2
  * \* Time: 9:31
- * \* Description:
+ * \* Description:定义通用异常信息
  * \
  */
 public enum CommonError {
