@@ -19,4 +19,5 @@ public interface CourseBaseInfoService {
     //课程分类查询
     PageResult<CourseBase> queryCourseBaseList(PageParams pageParams, QueryCourseParamsDto queryCourseParamsDto);
     public CourseBaseInfoDto createCourseBase(Long companyId,AddCourseDto addCourseDto);
+    public CourseBaseInfoDto getCourseBaseInfo(Long courseId);
 }
