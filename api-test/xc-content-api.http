@@ -58,4 +58,15 @@ Content-Type: application/json
 GET {{content_host}}/content/teachplan/117/tree-nodes
 
 <> 2023-07-27T160528.200.json
+### 新增课程计划--章
+POST {{content_host}}/content/teachplan
+Content-Type: application/json
+
+{
+  "id" : 285,
+  "courseId" : 74,
+  "parentid": 284,
+  "grade" : 2,
+  "pname" : "新章名称wadfaf [zxa]"
+}
 
