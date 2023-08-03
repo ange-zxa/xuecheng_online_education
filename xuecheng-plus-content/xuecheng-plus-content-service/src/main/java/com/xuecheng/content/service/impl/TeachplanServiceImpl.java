@@ -1,14 +1,18 @@
 package com.xuecheng.content.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.xuecheng.base.execption.XueChengPlusException;
 import com.xuecheng.content.mapper.TeachplanMapper;
+import com.xuecheng.content.mapper.TeachplanMediaMapper;
 import com.xuecheng.content.model.dto.SaveTeachplanDto;
 import com.xuecheng.content.model.dto.TeachplanDto;
 import com.xuecheng.content.model.po.Teachplan;
+import com.xuecheng.content.model.po.TeachplanMedia;
 import com.xuecheng.content.service.TeachplanService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,6 +29,8 @@ public class TeachplanServiceImpl implements TeachplanService {
 
     @Autowired
     TeachplanMapper teachplanMapper;
+    @Autowired
+    TeachplanMediaMapper teachplanMediaMapper;
 
     @Override
     public List<TeachplanDto> findTeachplanTree(Long courseId) {
@@ -54,6 +60,34 @@ public class TeachplanServiceImpl implements TeachplanService {
             Teachplan teachplan = teachplanMapper.selectById(id);
             BeanUtils.copyProperties(teachplanDto,teachplan);
             teachplanMapper.updateById(teachplan);
+        }
+    }
+    @Transactional
+    @Override
+    public void deleteTeachplan(Long teachplanId) {
+        //判断参数不能为空
+        if(teachplanId == null){
+            XueChengPlusException.cast("课程计划id不能为空");
+        }
+        //判断是章还是节
+        Teachplan teachplan = teachplanMapper.selectById(teachplanId);
+        Long parentid = teachplan.getParentid();
+        if(parentid == 0){
+            LambdaQueryWrapper<Teachplan> tl= new LambdaQueryWrapper<>();
+            tl.eq(Teachplan::getParentid,teachplanId);
+            Integer integer = teachplanMapper.selectCount(tl);
+            if(integer<=0){
+                teachplanMapper.deleteById(teachplanId);
+            }
+            else {
+                XueChengPlusException.cast("先删除完其下面节");
+            }
+        }else {
+            //为节
+            teachplanMapper.deleteById(teachplanId);
+            LambdaQueryWrapper<TeachplanMedia> teachplanMediaLambdaQueryWrapper = new LambdaQueryWrapper<TeachplanMedia>();
+            teachplanMediaLambdaQueryWrapper.eq(TeachplanMedia::getTeachplanId,teachplanId);
+            teachplanMediaMapper.delete(teachplanMediaLambdaQueryWrapper);
         }
     }
 }
