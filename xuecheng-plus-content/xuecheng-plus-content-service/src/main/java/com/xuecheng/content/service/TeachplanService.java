@@ -21,5 +21,8 @@ public interface TeachplanService {
      * @param teachplanDto
      */
     void saveTeachplan(SaveTeachplanDto teachplanDto);
+    //删除接口
     void deleteTeachplan(Long teachplanId);
+    //课程上下移动接口
+    void orderByTeachplan(String moveType, Long teachplanId);
 }

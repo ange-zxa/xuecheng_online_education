@@ -40,4 +40,14 @@ public class TeachplanController {
         teachplanService.deleteTeachplan(teachplanId);
     }
 
+    /**
+     *上移下移操作
+     * @param moveType 向上或者向下移动
+     * @param teachplanId 课程计划id
+     */
+    @ApiOperation("课程计划排序")
+    @PostMapping("/teachplan/{moveType}/{teachplanId}")
+    public void orderByTeachplan(@PathVariable String moveType, @PathVariable Long teachplanId) {
+        teachplanService.orderByTeachplan(moveType,teachplanId);
+    }
 }
