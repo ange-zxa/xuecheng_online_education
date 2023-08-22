@@ -144,7 +144,6 @@ public CourseBaseInfoDto getCourseBaseInfo(Long courseId){
     courseBaseInfoDto.setStName(courseCategoryBySt.getName());
     CourseCategory courseCategoryByMt = courseCategoryMapper.selectById(courseBase.getMt());
     courseBaseInfoDto.setMtName(courseCategoryByMt.getName());
-
     return courseBaseInfoDto;
 }
 //    单独写一个信息保存课程营销表
