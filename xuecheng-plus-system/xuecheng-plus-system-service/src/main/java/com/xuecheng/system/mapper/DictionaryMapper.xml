@@ -9,6 +9,18 @@
         <result column="code" property="code" />
         <result column="item_values" property="itemValues" />
     </resultMap>
+    <insert id="batchUpdatePilicoinAward">
+        insert into royalty_detail (trade_id,pilicoin_award,update_time,award_status) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.tradeId},#{item.pilicoinAward},#{item.updateTime},#{item.awardStatus})
+        </foreach>
+        on duplicate key update
+        pilicoin_award = values(pilicoin_award),
+        update_time =values(update_time),
+        award_status = values(award_status);
+    </insert>
+
+
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">

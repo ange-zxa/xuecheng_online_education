@@ -82,7 +82,7 @@
                tm.id             teachplanMeidaId,
                tm.media_fileName mediaFilename
         from teachplan one
-                 inner join teachplan two on one.id = two.parentid
+                 left join teachplan two on one.id = two.parentid
                  left join teachplan_media tm on two.id = tm.teachplan_id
         where one.parentid = 0
           and one.course_id = #{courseId}
